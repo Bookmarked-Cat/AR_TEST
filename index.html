@@ -36,7 +36,10 @@
                 // doSomething(position.coords.latitude, position.coords.longitude);
 
                 scene.prepend(`
-                    <a-text value="This content will always face you." look-at="[gps-camera]" scale="120 120 120" gps-entity-place="latitude: `+ position.coords.latitude + `; longitude: ` + position.coords.longitude + `;"></a-text>
+                <a-entity position="0 0 0" scale="0.05 0.05 0.05"
+                gltf-model="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+                gps-entity-place="latitude: `+ position.coords.latitude + `; longitude: ` + position.coords.longitude + `;"
+                ></a-entity>
                 `);
 
             });
