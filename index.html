@@ -9,12 +9,13 @@
 
 <style>
     .reload_btn {
-        width: 10px;
-        height: 10px;
-        position: fixed;
-        top: 10px;
-        z-index: 10;
-        background-color: blue;
+        height: 10vh;
+        background-color: skyblue;
+    }
+
+    .ar_area {
+        width: 100vw;
+        height: 90vh;
     }
 </style>
 
@@ -25,15 +26,17 @@
 
 <body style='margin : 0px; overflow: hidden;'>
     <div class="reload_btn">
-
+        새로고침하기
     </div>
     <!-- add artoolkit into your scene -->
-    <a-scene artoolkit>
-        <!-- define your scene as usual -->
-        <a-box position='0 0.5 0'></a-box>
-        <!-- define a camera inside the <a-marker-camera> -->
-        <a-marker-camera preset='hiro'><a-marker-camera>
-    </a-scene>
+    <div class="ar_area">
+        <a-scene artoolkit>
+            <!-- define your scene as usual -->
+            <a-box position='0 0.5 0'></a-box>
+            <!-- define a camera inside the <a-marker-camera> -->
+            <a-marker-camera preset='hiro'><a-marker-camera>
+        </a-scene>
+    </div>
 
     <script>
         document.querySelector('.reload_btn').addEventListener('click', function (e) {
