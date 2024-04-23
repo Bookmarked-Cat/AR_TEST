@@ -48,18 +48,19 @@
 
                     //엔티티 추가
                     const entity = document.createElement("a-entity");
-                    entity.setAttribute("position", "1 1 1");
+                    // entity.setAttribute("position", "1 1 1");
                     entity.setAttribute("scale", "0.05 0.05 0.05");
                     entity.setAttribute("gltf-model", "https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf");
                     entity.setAttribute("gps-entity-place", "latitude: " + position.coords.latitude + "; longitude: " + position.coords.longitude + ";");
+                    scene.prepend(entity)
                 }
 
-
-
+                const entity = document.createElement("a-entity");
+                // entity.setAttribute("position", "1 1 1");
+                entity.setAttribute("scale", "0.05 0.05 0.05");
+                entity.setAttribute("gltf-model", "https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf");
+                entity.setAttribute("gps-entity-place", "latitude: " + position.coords.latitude + "; longitude: " + position.coords.longitude + ";");
                 scene.prepend(entity)
-
-                // scene.prepend(<a-entity position='0 0 0' scale='0.05 0.05 0.05' 
-                // gltf-model='https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf' gps-entity-place='latitude: " + position.coords.latitude + "; longitude: " + position.coords.longitude + ";'></a-entity>);
 
             });
         });
