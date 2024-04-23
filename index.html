@@ -25,7 +25,10 @@
             { "latitude": "35.175726", "longitude": "129.124960" },
         ]
         window.addEventListener('DOMContentLoaded', function () {
+            console.log("로드됨")
             navigator.geolocation.getCurrentPosition((position) => {
+                console.log("위치 받아옴")
+                console.log(position)
                 // doSomething(position.coords.latitude, position.coords.longitude);
                 const scene = document.querySelector("#a_scene")
                 scene.innerHTML +=
