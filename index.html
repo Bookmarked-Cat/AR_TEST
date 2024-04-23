@@ -7,6 +7,16 @@
     <title>AR_TEST</title>
 </head>
 
+<style>
+    .reload_btn {
+        width: 10px;
+        height: 10px;
+        position: fixed;
+        top: 10px;
+        z-index: 10;
+    }
+</style>
+
 <!-- include A-Frame obviously -->
 <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
 <!-- include ar.js for A-Frame -->
@@ -15,11 +25,21 @@
 <body style='margin : 0px; overflow: hidden;'>
     <!-- add artoolkit into your scene -->
     <a-scene artoolkit>
+
+        <div class="reload_btn">
+            새로고침하기
+        </div>
         <!-- define your scene as usual -->
         <a-box position='0 0.5 0'></a-box>
         <!-- define a camera inside the <a-marker-camera> -->
         <a-marker-camera preset='hiro'><a-marker-camera>
     </a-scene>
+
+    <script>
+        document.querySelector('.reload_btn').addEventListener('click', function (e) {
+            location.reload(true);
+        })
+    </script>
 </body>
 
 </html>
