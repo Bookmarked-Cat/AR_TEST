@@ -10,6 +10,9 @@
 <body style="margin : 0px; overflow: hidden;">
     <a-scene id="a_scene" vr-mode-ui="enabled: false"
         arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">
+
+
+
         <a-marker preset="hiro">
             <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
             <a-entity position="0 0 0" scale="0.05 0.05 0.05"
@@ -17,26 +20,27 @@
         </a-marker>
         <a-text value="This content will always face you." look-at="[gps-camera]" scale="120 120 120"
             gps-entity-place="latitude: 35.176328692427866; longitude: 129.12546811659638;"></a-text>
-        <a-camera gps-camera rotation-reader> </a-camera>
+
     </a-scene>
 
     <script>
         let markerList = [
             { "latitude": "35.175726", "longitude": "129.124960" },
         ]
+        const scene = document.querySelector("#a_scene")
         window.addEventListener('DOMContentLoaded', function () {
             console.log("로드됨")
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log("위치 받아옴")
                 console.log(position)
                 // doSomething(position.coords.latitude, position.coords.longitude);
-                const scene = document.querySelector("#a_scene")
-                scene.innerHTML +=
-                    `
-            <a-text value="This content will always face you." look-at="[gps-camera]" scale="120 120 120"
-            gps-entity-place="latitude: `+ position.coords.latitude + `; longitude: ` + position.coords.longitude + `;"></a-text>
-            `
+
+                scene.prepend(`
+                    <a-text value="This content will always face you." look-at="[gps-camera]" scale="120 120 120" gps-entity-place="latitude: `+ position.coords.latitude + `; longitude: ` + position.coords.longitude + `;"></a-text>
+                `);
+
             });
+            scene.append("<a-camera gps-camera rotation-reader> </a-camera>");
         });
     </script>
 </body>
