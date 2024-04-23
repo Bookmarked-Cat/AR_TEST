@@ -24,6 +24,10 @@
 
     </a-scene>
 
+    <div>
+        asdfasdf
+    </div>
+
     <script>
         let markerList = [
             { "latitude": "35.175726", "longitude": "129.124960" },
@@ -37,7 +41,7 @@
                 // doSomething(position.coords.latitude, position.coords.longitude);
 
                 const entity = document.createElement("a-entity");
-                entity.setAttribute("position", "0 0 0");
+                entity.setAttribute("position", "1 1 1");
                 entity.setAttribute("scale", "0.05 0.05 0.05");
                 entity.setAttribute("gltf-model", "https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf");
                 entity.setAttribute("gps-entity-place", "latitude: " + position.coords.latitude + "; longitude: " + position.coords.longitude + ";");
