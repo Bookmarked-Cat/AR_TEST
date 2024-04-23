@@ -1,69 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR_TEST11111111</title>
+    <title>Saltwash Labs</title>
 
-
-    <style>
-        .reload_btn {
-            max-height: 10vh;
-            background-color: skyblue;
-            color: black;
-        }
-
-        .ar_area {
-            max-width: 100vw;
-            max-height: 90vh;
-        }
-
-        .ar_area a-scene {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-
-    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
-
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 </head>
 
-<body style='margin : 0px; overflow: hidden;'>
-    <div class="reload_btn">
-        <p>새로고침하기</p>
-    </div>
-    <!-- add artoolkit into your scene -->
-    <div class="ar_area">
-        <a-scene embedded arjs="sourceType: webcam;">
+<body>
 
-            <a-assets>
-                <a-asset-item id="cake-obj"
-                    src="https://cdn.rawgit.com/HackyRoot/A-Frame-Examples/c6a977a7/Happy_Birthday/assets/cake.obj"></a-asset-item>
-                <a-asset-item id="cake-mtl"
-                    src="https://cdn.rawgit.com/HackyRoot/A-Frame-Examples/c6a977a7/Happy_Birthday/assets/cake.mtl"></a-asset-item>
-            </a-assets>
+    <a-scene webxr="optionalFeatures: hit-test;" ar-hit-test="target: #scalawag; type: map;"
+        renderer="colorManagement: true;">
+        <a-assets>
+            <a-asset-item id="scalawag-gltf" src="assets/ha_scalawag.gltf"></a-asset-item>
+            <a-asset-item id="stage-gltf" src="assets/ha_stage.gltf"></a-asset-item>
+        </a-assets>
 
-            <a-marker-camera present="hiro">
-                <a-obj-model src="#cake-obj" mtl="#cake-mtl" rotation="60 20 -155" scale="1 0.5 1"></a-obj-model>
-            </a-marker-camera>
+        <a-entity id="scalawag" gltf-model="#scalawag-gltf" position="-0.9 0 -1.5" scale="1.25 1.25 1.25"
+            shadow="receive: false" animation-mixer></a-entity>
 
-        </a-scene>
-    </div>
+        <a-entity hide-on-enter-ar id="stage" gltf-model="#stage-gltf" shadow="cast: false"></a-entity>
 
-    <script>
+        <a-entity id="rig" position="0 0 2.2">
+            <a-entity id="camera" camera look-controls position="0 1.6 0"></a-entity>
+        </a-entity>
 
+        <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+        <a-entity light="type: directional; castShadow: true; intensity: 0.6;" position="-1 2 4"></a-entity>
 
-        window.addEventListener('DOMContentLoaded', function () {
-            //실행 코드
-            getUserMedia(constraints)
-        })
+        <a-sky hide-on-enter-ar color="#19ABE5"></a-sky>
+    </a-scene>
 
-        document.querySelector('.reload_btn').addEventListener('click', function (e) {
-            location.reload(true);
-        })
-    </script>
 </body>
 
 </html>
